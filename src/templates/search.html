@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block content %}
+
+        <div class="col-sm-4">
+            <form id="form" action="{% url 'search' %}" method="get">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Tags</div>
+                    <div class="panel-body">
+                        <select name="selected_tags" multiple class="form-control">
+                            {% for tag in tags %}
+                                <option>{{tag}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">Universities</div>
+                    <div class="panel-body">
+                        <select name="selected_unis" multiple class="form-control">
+                            {% for uni in unis %}
+                                <option value="{{uni.name}}">{{uni.title}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <input type="submit" value="Search" />
+                </div>
+            </form>
+        </div>
+        <div class="col-sm-8">
+            {% for item in results %}
+            <div class="panel panel-default">
+              <div class="panel-body">
+              {{ item.title }}
+              </div>
+            </div>
+            {% endfor %}
+            <nav>
+                <ul class="pagination">
+                    <li {% if not pagination.prev %}
+                        class="disabled"
+                    {% endif %}>
+                        <span>
+                            <span aria-hidden="true">&laquo;</span>
+                        </span>
+                    </li>
+
+                    {% for page in pagination.pages %}
+                        {% if page.active %}
+                            <li class="active">
+                                <span>
+                                    {{ page.number }}
+                                    <span class="sr-only">(current)</span>
+                                </span>
+                            </li>
+                        {% else %}
+                            <li><a href="{{ page.url }}">
+                                {{ page.number }}
+                            </a></li>
+                        {% endif %}
+                    {% endfor %}
+                    <li {% if not pagination.next %}
+                        class="disabled"
+                    {% endif %}>
+                        <a href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+{% endblock %}

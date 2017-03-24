@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="center-block" style="max-width: 330px;">
+    <form method="post" action="{{ this_page }}">
+        {% csrf_token %}
+        <input class="form-control" id="email" name="email" placeholder="E-mail" />
+        <input class="form-control" id="fullname" name="fullname" placeholder="Full name" />
+        <input class="form-control" id="about" name="about" placeholder="Bio" />
+        <button class="btn btn-lg btn-primary btn-block" type="submit">
+            Create a porfolio
+        </button>
+    </form>
+</div>
+
+{% endblock %}

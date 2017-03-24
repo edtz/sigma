@@ -1,0 +1,20 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+Imtiaz Ahmed - Project leader
+Kuchimanchi Lakshmi Prasanna - Requirements
+Joonas Maksimainen - Design and Analysis
+Eduard Telezhnikov - Design and Development
+Vitezslav Kriz - Design and Development
+Juho Juvani - Testing
+
+# THANKS
+
+    <name>
+
+# TECHNOLOGY COLOPHON
+
+    CSS3, HTML5
+    Apache Server Configs, jQuery, Modernizr, Normalize.css

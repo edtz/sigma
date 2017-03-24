@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="center-block" style="max-width: 330px;">
+{% if can_edit %}
+        <form method="post" action="{{ this_page }}">
+            {% csrf_token %}
+            {{ type }}
+            <input class="form-control" id="name" name="name" placeholder="Name" value="{{ name }}" disabled />
+            <input class="form-control" id="title" name="title" placeholder="Full name" value="{{ title }}" />
+            <input class="form-control" id="description" name="description" placeholder="Description, could be empty" value="{{ description }}" />
+            <button class="btn btn-lg btn-primary btn-block" type="submit" >Update</button>
+        </form>
+
+{% else %}
+    <div class="list-group">
+        <li class="list-group-item">{{ name }}</li>
+        <li class="list-group-item">{{ fullname }}</li>
+        <li class="list-group-item">{{ description }}</li>
+    </div>
+{% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    {% if action %}
+    <div class="panel panel-info">
+        <div class="panel-body">
+            <form id="update_lol" method="post" action="{{ this_page }}">
+                {% csrf_token %}
+                <span>As an owner of </span>
+                <select class="form-control" name="company" style="display: inline; max-width: 260px">
+                    {% for comp in action %}
+                        <option value="{{ comp.id }}">{{ comp.title }}</option>
+                    {% endfor %}
+                </select>
+                <span>, you can <a href="javascript:{}" onclick="document.getElementById('update_lol').submit(); return false;">invite</a> this person to be recruiter for you.</span>
+            </form>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if student %}
+        <div class="col-sm-4">
+            <form method="post" action="{{ this_page }}">
+                {% csrf_token %}
+                <input class="form-control" id="email" name="email" placeholder="E-mail" value="{{ student.email }}" />
+                <input class="form-control" id="fullname" name="fullname" placeholder="Full name" value="{{ student.fullname }}" />
+                <input class="form-control" id="about" name="about" placeholder="Bio" value="{{ student.about }}" />
+                <button>remove</button>
+                <button>edit</button>
+                <a href="{{ this_page }}create/organization/">Create an organization</a>
+            </form>
+        </div>
+    {% else %}
+        <a href="{{ this_page }}create/student/">Create a student portfolio</a></br>
+    {% endif %}
+
+    <div class="col-sm-4">
+        Universities owner:</br>
+        <div class="list-group">
+        {% for uni in uni_owned %}
+            <a href="{{ uni.link }}" class="list-group-item">{{ uni.title }}</a>
+        {% empty %}
+            <li class="list-group-item">Nothing.</li>
+        {% endfor %}
+        </div>
+        Universities student:</br>
+        <div class="list-group">
+        {% for uni in uni_member %}
+            <a href="{{ uni.link }}" class="list-group-item">{{ uni.title }}</a>
+        {% empty %}
+            <li class="list-group-item">Nothing.</li>
+        {% endfor %}
+        </div>
+    </div>
+
+    <div class="col-sm-4">
+        Company owner:</br>
+        <div class="list-group">
+        {% for comp in comp_owned %}
+            <a href="{{ comp.link }}" class="list-group-item">{{ comp.title }}</a>
+        {% empty %}
+            <li class="list-group-item">Nothing.</li>
+        {% endfor %}
+        </div>
+        Recruiter for:</br>
+        <div class="list-group">
+        {% for comp in comp_member %}
+            <a href="{{ comp.link }}" class="list-group-item">{{ comp.title }}</a>
+        {% empty %}
+            <li class="list-group-item">Nothing.</li>
+        {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="center-block" style="max-width: 330px;">
+    <form method="post" action="/auth/login/">
+        {% csrf_token %}
+        <input class="form-control" id="username" name="username" placeholder="Username" />
+        <input class="form-control" id="password" name="password" placeholder="Password" type="password" />
+        <button class="btn btn-lg btn-primary btn-block" type="submit">
+            Log In
+        </button>
+    </form>
+</div>
+
+{# Assumes you setup the password_reset view in your URLconf #}
+{# well i didn't - @iaml #}
+{# <p><a href="{% url 'password_reset' %}">Lost password?</a></p> #}
+
+{% endblock %}

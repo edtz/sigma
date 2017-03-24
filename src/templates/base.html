@@ -1,0 +1,78 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>{% block title %}Sigma{% endblock %}</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        {% load staticfiles %}
+        <link rel="stylesheet" href="{% static "css/normalize.css" %}">
+        <link rel="stylesheet" href="{% static "css/main.css" %}">
+        <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
+        <link rel="stylesheet" href="{% static "css/bootstrap-theme.css" %}">
+
+        <!-- I don't really know what this thing does but whatever-->
+        <script src="{% static "js/vendor/modernizr-2.8.3.min.js" %}"></script>
+
+    </head>
+    <body>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <div class="container-fluid">
+        <nav class="navbar navbar-default" style="margin-top: 10px;">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-buttons" aria-expanded="false">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                    </button>
+                    <div class="navbar-brand"><a href="/"><strong>Σ</strong></a></div>
+                    <p class="navbar-text">Students + Employers = &lt;3</p>
+                </div>
+                <div class="collapse navbar-collapse" id="nav-buttons">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/search/">Search</a></li>
+                        <li><a href="/search/">Jobs</a></li>
+                        <li><a href="/search/">Profiles</a></li>
+                        {% if user.is_authenticated %}
+                            <li><a href="/profile/">{{ user.username }}</a></li>
+                            <li><a href="/auth/logout/">Log Out</a></li>
+                        {% else %}
+                            <li><a href="/auth/signup/">Sign Up</a></li>
+                            <li><a href="/auth/login/">Log In</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- oh boy here we go -->
+        {% block notifications %}
+            {% if warning %}
+            <div class="panel panel-warning">
+                <div class="panel-body">
+                    {{ warning }}
+                </div>
+            </div>
+            {% endif %}
+        {% endblock %}
+
+        {% block content %}
+            <center>
+                Why are you even seeing this? It most definitely should not have happened. 
+            </center> 
+        {% endblock %}
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.3.min.js"><\/script>')</script>
+        <script src="{% static "js/bootstrap.min.js" %}"></script>
+        <script src="{% static "js/plugins.js" %}"></script>
+        <script src="{% static "js/main.js" %}"></script>
+    </body>
+</html>
