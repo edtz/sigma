@@ -1,6 +1,9 @@
 Sigma/LUT-SQPO
 ========
 
+### Warning
+This project wasn't finished. It *will* run, but some features weren't implemented.
+
 ### Description
 A team project for Software Quality, Processes and Organizations course at LUT university. The purpose of the service is to allow organizations and students looking for employees and jobs respectively, find each other. The service allows students to highlight their programming experience by uploading their projects and tagging relevant skills. Organizations would then search for employees via required technologies and invite suitable candidates for an interview.
 
@@ -9,9 +12,6 @@ One of the requirements set for the project was to utilize CKAN as data storage.
 Worth noting that before the project, both developers didn't have any experience with Django. If I were to rewrite this project from scratch now, I would've used class-based views, created fewer apps, utilized django's forms capabilities and messaging system.
 Since this project was developed in accordance with UPEDU process (which is a simplified version of Rational Unified Process), it is extensively documented. Documentation can be found in /docs directory.
 This project was EOL'd in November '15.
-
-### Warning
-This project wasn't finished. It *will* run, but some features weren't implemented.
 
 ### Prerequisites
 - Python 3.x
