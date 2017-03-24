@@ -26,13 +26,12 @@ This project was EOL'd in November '15.
 ### How to use
 Run migrations:
 
-`./manage.py makemigrations`
-
-`./manage.py migrate`
+    ./manage.py makemigrations
+    ./manage.py migrate
 
 And then run however you like, for example using django's dev server:
 
-`./manage.py runserver`
+    ./manage.py runserver
 
 ### Team
 - Imtiaz Ahmed (Project Manager)
